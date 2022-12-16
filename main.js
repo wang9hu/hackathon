@@ -12,7 +12,7 @@ function populateStorage () {
       const newLi = document.createElement('li');
       const removeLi = document.createElement('div');
 
-      removeLi.innerText = 'X';
+      removeLi.innerText = '[x]';
       tabsOl.appendChild(newLi);
       newLi.setAttribute('id', key);
       const newParag = document.createElement('p');
@@ -20,14 +20,17 @@ function populateStorage () {
       newLi.appendChild(removeLi);
       newLi.appendChild(newParag);
 
-      removeLi.addEventListener('click', () => removeList(newLi));
+      removeLi.addEventListener('click', () => {removeList(newLi)});
     }
   });
 }
 
 function removeList(ele) {
+  //document.getElementById("text").value = "";
   const id = ele.getAttribute('id');
   chrome.storage.local.remove(id, () => {});
+  // ele.innerHTML = '';
+  ele.remove();
 }
 
 const textarea = document.querySelector('#text')
@@ -105,7 +108,8 @@ function addNewItem() {
   const newLi = document.createElement('li');
 
   const removeLi = document.createElement('div');
-  removeLi.innerText = 'X';
+  removeLi.innerText = '[x]';
+  removeLi.addEventListener('click', () => {removeList(newLi)});
 
   newLi.setAttribute('id', index);
   tabsOl.appendChild(newLi);
@@ -146,13 +150,16 @@ function clearStorage () {
 // click on the url, if original tab removeLid, open a new one, if not, return to that tab
 
 //if possible, removeLi inactive tabs after a certain amount of time 
-// function removeLiTabs() {
-//     chrome.tabs.query({}, tabs => { //pass in some criteria to select inactive tabs
-//         tabs.forEach((tab) => {
-//             chrome.tabs.remove(tab)
-//         });
-//     });
-// }
+function removeTabs() {
+    chrome.tabs.query({active:false}, (tabs) => { 
+      tabs.forEach((tab) => {
+      chrome.tabs.remove(tab.id);
+    })
+  }); 
+}
+const declutterButton = document.querySelector('.declutterTabs');
+declutterButton.addEventListener('click', () => {removeTabs()});
+
 
 // navigator.permissions.query({name: "clipboard-write"}).then((result) => {
 //     if (result.state === "granted" || result.state === "prompt") {

@@ -4,9 +4,13 @@
     "description": "Condenses relevant information from your tabs in one place",
     "version": "1.0",
     "action": {
-      "default_popup": "index.html"
+      "default_popup": "index.html",
+      "default_icon" : "assets/recycle-bin.png"
     },
-    "permissions": ["tabs", "storage", "clipboardRead"],
+    "icons" : {
+      "128" : "assets/recycle-bin.png"
+    },
+    "permissions": ["tabs", "storage", "clipboardRead", "activeTab"],
     "commands": {
       "run-foo": {
         "suggested_key": {

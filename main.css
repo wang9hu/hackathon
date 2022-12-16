@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Offside&family=Poppins:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kenia&family=Offside&family=Poppins:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 .body {
   height: 450px;
@@ -6,17 +7,25 @@
   /*border: 1px solid black;*/
   padding: 5px;
   border-radius: 10px;
-  background-color: #72b7e3;
+  /* background-color: #72b7e3; */
+  background-image: url("assets/clouds_rising_in_the_mountains.jpg");
+  background-size: cover;
+  background-blend-mode: luminosity;
   /* background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
   /*background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);*/
   /*color: #72b7e3;*/
   color: #1E2F97;
   font-family: 'Offside', cursive;
   overflow: scroll;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 h1 {
     text-align: center;
+    color: #e34234;
+    font-weight: bold;
+    font-size: 32px;
 }
 
 ol {
@@ -56,6 +65,7 @@ li div:hover {
 #title-text {
     border: hidden;
     outline: none;
+    
 }
 
 
