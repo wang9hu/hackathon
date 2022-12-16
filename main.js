@@ -1,8 +1,6 @@
 let index = 0;
 console.log('hh');
 
-populateStorage();
-
 function populateStorage () {
   chrome.storage.local.get(null, (result) => {
     console.log(result);
@@ -11,16 +9,18 @@ function populateStorage () {
       const tabsOl = document.querySelector('.tabs');
       const newLi = document.createElement('li');
       const removeLi = document.createElement('div');
+      const copyLi = document.createElement('div');
 
       removeLi.innerText = '[x]';
+      copyLi.innerText = '[copy]';
       tabsOl.appendChild(newLi);
       newLi.setAttribute('id', key);
       const newParag = document.createElement('p');
       newParag.innerText = result[key];
-      newLi.appendChild(removeLi);
-      newLi.appendChild(newParag);
+      newLi.append(removeLi, copyLi, newParag);
 
       removeLi.addEventListener('click', () => {removeList(newLi)});
+      copyLi.addEventListener('click', () => {copy(newLi)});
     }
   });
 }
@@ -33,63 +33,16 @@ function removeList(ele) {
   ele.remove();
 }
 
+// function copyLi(ele) {
+//   const 
+// }
+
+populateStorage();
+
 const textarea = document.querySelector('#text')
 textarea.focus();
 document.execCommand('paste', false, null);
 
-
-// chrome.commands => trigger action based on keyboard shortcuts
-// chrome.commands.onCommand.addListener((command) => {
-//   console.log(`Command: ${command}`);
-//   //const highlightedText = selection();
-//   const url = saveUrl();
-//   //put the selected text on the the page
- 
-//   const tabsOl = document.querySelector('.tabs');
-//   const newLi = document.createElement('li');
-//   const innerTitle = document.createElement('h3');
-
-//   innerTitle.innerText = url;
-//   newLi.appendChild(innerTitle);
-//   tabsOl.appendChild(newLi);
-//   const newParag = document.createElement('p');
-//   newLi.appendChild(newParag);
-//   //newParag.innerText = highlightedText;
-// });
-
-
- //url functionality  
-// function saveUrl() {
-//   chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
-//     let url = tabs[0].url;
-//     // use `url` here inside the callback because it's asynchronous!
-//     console.log(url);
-//     return url;
-//   });
-// }
-//select text
-// function selection() {
-//   if (window.getSelection) {
-//     return window.getSelection();
-//   }
-// }
-
-// function myFunction() {
-//     // Get the text field
-//     let copyText = document.getElementById("text");
-  
-//     // Select the text field
-//     copyText.select();
-//     copyText.setSelectionRange(0, 99999); // For mobile devices
-  
-//     // Copy the text inside the text field
-//     navigator.clipboard.writeText(copyText.value);
-//     newParag.innerText = copyText.value;
-    
-//     // Alert the copied text
-//     //alert("Copied the text: " + copyText.value);
-
-//   }
 const buttonPaste = document.querySelector(".paste");
 buttonPaste.addEventListener('click', addNewItem);
 

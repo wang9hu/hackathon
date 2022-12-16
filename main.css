@@ -7,10 +7,11 @@
   /*border: 1px solid black;*/
   padding: 5px;
   border-radius: 10px;
+  background-color: #9DCAEB;
   /* background-color: #72b7e3; */
-  background-image: url("assets/clouds_rising_in_the_mountains.jpg");
-  background-size: cover;
-  background-blend-mode: luminosity;
+  /* background-image: url("assets/clouds_rising_in_the_mountains.jpg"); */
+  /* background-size: cover; */
+  /* background-blend-mode: luminosity; */
   /* background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
   /*background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);*/
   /*color: #72b7e3;*/
@@ -33,9 +34,9 @@ ol {
 }
 
 p {
-  display: inline-block;
+  display: block;
   word-wrap: normal;
-  vertical-align:top;
+  /* vertical-align:top; */
   margin-top: 0px;
 }
 
@@ -49,12 +50,13 @@ li div:hover {
 } 
 
 .title, textarea {
+    display: block;
     font-family: 'Offside', cursive;
     font-style: italic;
     font-size: medium;
     color: grey;
     border: none;
-    width: 95%;
+    width: 570px;
     background-color: #9DCAEB;
     margin-left: 10px;
     margin-top: 10px;
